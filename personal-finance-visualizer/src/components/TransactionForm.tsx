@@ -8,7 +8,11 @@ const categories = [
   'Food', 'Transport', 'Rent', 'Shopping', 'Entertainment', 'Utilities', 'Others',
 ];
 
-export default function TransactionForm({ onSuccess }: { onSuccess: () => void }) {
+type TransactionFormProps = {
+  onSuccess?: () => void;
+};
+
+export default function TransactionForm({ onSuccess }: TransactionFormProps) {
   const [amount, setAmount] = useState('');
   const [date, setDate] = useState('');
   const [description, setDescription] = useState('');
@@ -31,7 +35,7 @@ export default function TransactionForm({ onSuccess }: { onSuccess: () => void }
     });
 
     if (res.ok) {
-      onSuccess(); // reload list
+      if (onSuccess) onSuccess(); // reload list
       setAmount('');
       setDate('');
       setDescription('');
