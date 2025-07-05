@@ -16,7 +16,7 @@ interface Budget {
 }
 
 export default function BudgetChart() {
-  const [data, setData] = useState<any[]>([]);
+  const [data, setData] = useState<Array<{ category: string; spent: number; budget: number }>>([]);
 
   useEffect(() => {
     const fetchData = async () => {
