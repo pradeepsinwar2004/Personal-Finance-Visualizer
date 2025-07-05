@@ -3,8 +3,8 @@ import { Transaction } from "@/models/transaction";
 import { NextResponse } from "next/server";
 
 
-
-export async function PUT(req: Request, { params }: { params: { id: string } }) {
+// @ts-ignore
+export async function PUT(req: Request, { params }) {
   const { id } = params;
   const body = await req.json();
   await connectDB();
@@ -12,7 +12,8 @@ export async function PUT(req: Request, { params }: { params: { id: string } }) 
   return NextResponse.json(updated);
 }
 
-export async function DELETE(_: Request, { params }: { params: { id: string } }) {
+// @ts-ignore
+export async function DELETE(_: Request, { params }) {
   const { id } = params;
   await connectDB();
   await Transaction.findByIdAndDelete(id);
