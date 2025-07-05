@@ -6,7 +6,12 @@ import { Button } from "@/components/ui/button";
 
 const categories = ["Food", "Transport", "Rent", "Shopping", "Entertainment", "Utilities", "Other"];
 
-export default function BudgetForm() {
+
+type BudgetFormProps = {
+  onSuccess?: () => void;
+};
+
+export default function BudgetForm({ onSuccess }: BudgetFormProps) {
   const [category, setCategory] = useState("Food");
   const [month, setMonth] = useState("");
   const [budget, setBudget] = useState("");
@@ -19,6 +24,7 @@ export default function BudgetForm() {
     });
     setMonth("");
     setBudget("");
+    if (onSuccess) onSuccess();
   };
 
   return (
