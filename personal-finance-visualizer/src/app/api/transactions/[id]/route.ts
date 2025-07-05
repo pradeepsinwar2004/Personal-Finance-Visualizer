@@ -3,7 +3,7 @@ import { Transaction } from "@/models/transaction";
 import { NextResponse } from "next/server";
 
 
-// @ts-expect-error
+// @ts-expect-error Next.js dynamic route context typing workaround
 export async function PUT(req: Request, { params }) {
   const { id } = params;
   const body = await req.json();
@@ -12,7 +12,7 @@ export async function PUT(req: Request, { params }) {
   return NextResponse.json(updated);
 }
 
-// @ts-expect-error
+// @ts-expect-error Next.js dynamic route context typing workaround
 export async function DELETE(_: Request, { params }) {
   const { id } = params;
   await connectDB();
